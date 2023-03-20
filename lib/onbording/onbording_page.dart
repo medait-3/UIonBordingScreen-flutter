@@ -66,7 +66,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           isLastPage
               ? GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => const MyWidget()),
                     );
@@ -92,24 +92,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   width: double.infinity,
                   height: 75,
                   padding: EdgeInsets.symmetric(horizontal: AppPadding.p16),
-                  child: Row(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SmoothPageIndicator(
-                        controller: _controller,
-                        count: 3,
-                        effect: WormEffect(
-                          dotWidth: 13,
-                          dotHeight: 13,
-                          activeDotColor: AppColors.primary,
-                        ),
-                      ),
                       GestureDetector(
                         onTap: () {
                           _controller.nextPage(
                               duration: Duration(milliseconds: 500),
                               curve: Curves.easeIn);
-                          ///////////////////////////////
                         },
                         child: Container(
                           width: 100,
@@ -125,6 +115,15 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             style: getRegularStyle(
                                 color: AppColors.primary, fontSize: 15),
                           ),
+                        ),
+                      ),
+                      SmoothPageIndicator(
+                        controller: _controller,
+                        count: 3,
+                        effect: WormEffect(
+                          dotWidth: 8,
+                          dotHeight: 8,
+                          activeDotColor: AppColors.primary,
                         ),
                       ),
                     ],
